@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+
+        #header {
+            display: flex;
+            padding: 10px;
+            background-color: #007f3f;
+            color: white;
+            font-weight: bold;
+        }
+
+        #header div {
+            flex: 1;
+            text-align: center;
+        }
+
+        #container {
+            margin-top: 10vh;
+            width: 500px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            font-size: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        .punti {
+            width: 50px;
+            text-align: center;
+        }
+
+        .row:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="header" class="row">
+            <div>Giocatore1</div>
+            <div>stats</div>
+            <div>Giocatore2</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="vittoriegiocatore1">0</div>
+            <div class="categoria">Vittorie</div>
+            <div class="punti" id="vittoriegiocatore2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="sconfittegiocatore1">0</div>
+            <div id="categoria">Sconfitte</div>
+            <div class="punti" id="sconfittegiocatore2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="pareggio1">0</div>
+            <div id="categoria">Pareggi</div>
+            <div class="punti" id="pareggio2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="partitegiocate1">0</div>
+            <div id="categoria">Partite giocate</div>
+            <div class="punti" id="partitegiocate2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="verticale1">0</div>
+            <div id="categoria">File verticali</div>
+            <div class="punti" id="verticale2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="orizzontale1">0</div>
+            <div id="categoria">File orizzontali</div>
+            <div class="punti" id="orizzontale2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="diagonale1">0</div>
+            <div id="categoria">File diagonali</div>
+            <div class="punti" id="diagonale2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="vittcon1">0</div>
+            <div id="categoria">Vittorie consecutive</div>
+            <div class="punti" id="vittcon2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="vittconMax1">0</div>
+            <div id="categoria">Vittorie consecutive massime</div>
+            <div class="punti" id="vittconMax2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="mosseMedie1">0</div>
+            <div id="categoria">Mosse medie per vittoria</div>
+            <div class="punti" id="mosseMedie2">0</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="tassoVitt1">0%</div>
+            <div id="categoria">Tasso di vittoria</div>
+            <div class="punti" id="tassoVitt2">0%</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="tempoGioco1">0s</div>
+            <div id="categoria">Tempo di gioco</div>
+            <div class="punti" id="tempoGioco2">0s</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="tempoTurno1">0s</div>
+            <div id="categoria">Tempo del turno</div>
+            <div class="punti" id="tempoTurno2">0s</div>
+        </div>
+        <div class="row">
+            <div class="punti" id="tempoMedio1">0s</div>
+            <div id="categoria">Tempo medio per partita</div>
+            <div class="punti" id="tempoMedio2">0s</div>
+        </div>
+    </div>
+    <script>
+        //vittorie
+        if (localStorage.getItem("vittoriegiocatore1")) {
+            document.getElementById("vittoriegiocatore1").innerHTML = localStorage.getItem("vittoriegiocatore1")
+        }
+        else {
+            document.getElementById("vittoriegiocatore1").innerHTML = "-"
+        }
+
+        if (localStorage.getItem("vittoriegiocatore2")) {
+            document.getElementById("vittoriegiocatore2").innerHTML = localStorage.getItem("vittoriegiocatore2")
+        }
+        else {
+            document.getElementById("vittoriegiocatore2").innerHTML = "-"
+        }
+
+        //sconfitte
+        if (localStorage.getItem("sconfittegiocatore1")) {
+            document.getElementById("sconfittegiocatore1").innerHTML = localStorage.getItem("sconfittegiocatore1")
+        }
+        else {
+            document.getElementById("sconfittegiocatore1").innerHTML = "-"
+        }
+
+        if (localStorage.getItem("sconfittegiocatore2")) {
+            document.getElementById("sconfittegiocatore2").innerHTML = localStorage.getItem("sconfittegiocatore2")
+        }
+        else {
+            document.getElementById("sconfittegiocatore2").innerHTML = "-"
+        }
+
+        //pareggio
+        if (localStorage.getItem("pareggio")) {
+            document.getElementById("pareggio1").innerHTML = localStorage.getItem("pareggio");
+            document.getElementById("pareggio2").innerHTML = localStorage.getItem("pareggio");
+        }
+        else {
+            document.getElementById("pareggio1").innerHTML = "-";
+            document.getElementById("pareggio2").innerHTML = "-";
+        }
+        //partite giocate
+        if (localStorage.getItem("partitegiocate")) {
+            document.getElementById("partitegiocate1").innerHTML = localStorage.getItem("partitegiocate");
+            document.getElementById("partitegiocate2").innerHTML = localStorage.getItem("partitegiocate");
+        }
+        else {
+            document.getElementById("partitegiocate1").innerHTML = "-"
+            document.getElementById("partitegiocate2").innerHTML = "-"
+        }
+        //file verticali
+        if(localStorage.getItem("verticalegiocatore1")){
+            document.getElementById("verticale1").innerHTML = localStorage.getItem("verticalegiocatore1")
+        }
+        else{
+            document.getElementById("verticale1").innerHTML = "-";
+        }
+        if(localStorage.getItem("verticalegiocatore2")){
+            document.getElementById("verticale2").innerHTML = localStorage.getItem("verticalegiocatore2")
+        }
+        else{
+            document.getElementById("verticale2").innerHTML = "-";
+        }
+        //file orizzontali
+        if(localStorage.getItem("orizzontalegiocatore1")){
+            document.getElementById("orizzontale1").innerHTML = localStorage.getItem("orizzontalegiocatore1")
+        }
+        else{
+            document.getElementById("orizzontale1").innerHTML = "-";
+        }
+        if(localStorage.getItem("orizzontalegiocatore2")){
+            document.getElementById("orizzontale2").innerHTML = localStorage.getItem("orizzontalegiocatore2")
+        }
+        else{
+            document.getElementById("orizzontale2").innerHTML = "-";
+        }
+        //file diagonali
+        if(localStorage.getItem("diagonalegiocatore1")){
+            document.getElementById("diagonale1").innerHTML = localStorage.getItem("diagonalegiocatore1")
+        }
+        else{
+            document.getElementById("diagonale1").innerHTML = "-";
+        }
+        if(localStorage.getItem("diagonalegiocatore2")){
+            document.getElementById("diagonale2").innerHTML = localStorage.getItem("diagonalegiocatore2")
+        }
+        else{
+            document.getElementById("diagonale2").innerHTML = "-";
+        }
+        //vittorie consecutive
+        if(localStorage.getItem("vittorieCongiocatore1")){
+            document.getElementById("vittcon1").innerHTML = localStorage.getItem("vittorieCongiocatore1")
+        }
+        else{
+            document.getElementById("vittcon1").innerHTML = "-";
+        }
+        if(localStorage.getItem("vittorieCongiocatore2")){
+            document.getElementById("vittcon2").innerHTML = localStorage.getItem("vittorieCongiocatore2")
+        }
+        else{
+            document.getElementById("vittcon2").innerHTML = "-";
+        }
+        //vittorie consecutive massime
+        if(localStorage.getItem("vittorieConMaxgiocatore1")){
+            document.getElementById("vittconMax1").innerHTML = localStorage.getItem("vittorieConMaxgiocatore1")
+        }
+        else{
+            document.getElementById("vittconMax1").innerHTML = "-";
+        }
+        if(localStorage.getItem("vittorieConMaxgiocatore2")){
+            document.getElementById("vittconMax2").innerHTML = localStorage.getItem("vittorieConMaxgiocatore2")
+        }
+        else{
+            document.getElementById("vittconMax2").innerHTML = "-";
+        }
+        //mosse medie per vittoria
+        if(localStorage.getItem("mosseMedgiocatore1")){
+            document.getElementById("mosseMedie1").innerHTML = localStorage.getItem("mosseMedgiocatore1")
+        }
+        else{
+            document.getElementById("mosseMedie1").innerHTML = "-"
+        }
+        if(localStorage.getItem("mosseMedgiocatore2")){
+            document.getElementById("mosseMedie2").innerHTML = localStorage.getItem("mosseMedgiocatore2")
+        }
+        else{
+            document.getElementById("mosseMedie2").innerHTML = "-"
+        }
+        //tasso di vittoria
+        if(localStorage.getItem("tassoVitt1")){
+            document.getElementById("tassoVitt1").innerHTML = parseFloat(localStorage.getItem("tassoVitt1")).toFixed(2) + "%"
+        }
+        else{
+            document.getElementById("tassoVitt1").innerHTML = "-"
+        }
+        if(localStorage.getItem("tassoVitt2")){
+            document.getElementById("tassoVitt2").innerHTML = parseFloat(localStorage.getItem("tassoVitt2")).toFixed(2) + "%"
+        }
+        else{
+            document.getElementById("tassoVitt2").innerHTML = "-"
+        }
+        //tempo di gioco
+        if(localStorage.getItem("tempoGioco")){
+            document.getElementById("tempoGioco1").innerHTML = localStorage.getItem("tempoGioco")
+            document.getElementById("tempoGioco2").innerHTML = localStorage.getItem("tempoGioco")
+        }
+        else{
+            document.getElementById("tempoGioco1").innerHTML = "-"
+            document.getElementById("tempoGioco2").innerHTML = "-"
+        }
+        //tempo del turno
+        if(localStorage.getItem("tempoTurno1")){
+            document.getElementById("tempoTurno1").innerHTML = localStorage.getItem("tempoTurno1") + "s"
+        }
+        else{
+            document.getElementById("tempoTurno1").innerHTML = "-" 
+        }
+        if(localStorage.getItem("tempoTurno2")){
+            document.getElementById("tempoTurno2").innerHTML = localStorage.getItem("tempoTurno2") + "s"
+        }
+        else{
+            document.getElementById("tempoTurno2").innerHTML = "-" 
+        }
+    </script>
+</body>
+
+</html>
