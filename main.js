@@ -146,16 +146,7 @@ function controlloOr(colore, giocatore) {
     }
     if (contatore >= 4) {
         fermaCro()
-        let msg = document.createElement("div");
-        msg.id = "msg"
-        msg.innerHTML = `
-          <div>${giocatore} ha vinto con una linea orizzontale</div>
-          <button id="btn2" onclick="togli2(event, ${giocatore})">Continua</button>
-        `
-        document.getElementById("body").appendChild(msg)
-        msg.style.display = 'block';
-        document.body.classList.add('pointer-overlay')
-
+        alert(giocatore + " ha vinto con una linea orizzontale!");
         salvaStats(giocatore, "orizzontale");
         restarGame()
     }
